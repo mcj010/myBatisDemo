@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mcj010.dao.UserDao">
-    <select id="selectUserById" resultType="com.mcj010.bean.User">
+    <select id="selectUserById" resultType="User">
         select * from user where id = #{id}
     </select>
 
