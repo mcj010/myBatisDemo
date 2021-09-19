@@ -11,10 +11,24 @@
     <typeAliases>
         <package name="com.mcj010.bean"/>
     </typeAliases>
+    <!--配置具体的环境属性
+       id:表示当前环境的名称
+       -->
     <environments default="development">
         <environment id="development">
+            <!--事务管理器，每一种数据源都需要配置具体的事务管理器
+            type:表示事务管理器的类型
+            jdbc:使用jdbc原生的事务控制
+            managed:什么都没做
+            -->
             <transactionManager type="JDBC"/>
+            <!--配置具体的数据源的类型
+           type:表示数据源的类型
+           pooled:使用数据库连接池
+           unpooled：每次都打开和关闭一个链接
+           -->
             <dataSource type="POOLED">
+                <!--链接数据的时候需要添加的必备的参数，一般是四个，如果是连接池的话，可以设置连接最大个数等相关信息-->
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
                 <property name="username" value="${username}"/>
@@ -23,7 +37,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="./mapper/empDao.xml"/>
-        <mapper resource="./mapper/userDao.xml"/>
+        <mapper resource="mapper/empDao.xml"/>
+<!--        <mapper resource="mapper/userDao.xml"/>-->
+        <mapper class="com.mcj010.dao.UserDao"/>
     </mappers>
 </configuration>
