@@ -12,6 +12,9 @@ import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @FixMethodOrder(MethodSorters.DEFAULT)
 public class Test01 {
@@ -85,4 +88,17 @@ public class Test01 {
         System.out.println(emp);
         sqlsesson.close();
     }
+
+    @Test
+    public void testFSelect() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+
+        Map map = new HashMap();
+        map.put("SAL",900);
+        List<Emp> list = dao.getListByEnameAndSal(map);
+        System.out.println(list.size());
+        sqlsesson.close();
+    }
+
 }
