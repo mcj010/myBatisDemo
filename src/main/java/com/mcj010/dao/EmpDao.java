@@ -22,4 +22,7 @@ public interface EmpDao {
     public Emp selectEmpByEnameAndSal(@Param("ename") String ename, @Param("sal") Double sal);
 
     public List<Emp> getListByEnameAndSal(Map<String, Object> map);
+
+    // 一对一
+    public Emp selectEmpAndDeptByEmpno(Integer empno);
 }

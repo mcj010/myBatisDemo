@@ -14,21 +14,7 @@ public class Emp {
     private Date hiredate;
     private Double sal;
     private Double common;
-    private Integer deptno;
-
-    public Emp() {
-    }
-
-    public Emp(Integer empno, String ename, String job, Integer mgr, Date hiredate, Double sal, Double common, Integer deptno) {
-        this.empno = empno;
-        this.ename = ename;
-        this.job = job;
-        this.mgr = mgr;
-        this.hiredate = hiredate;
-        this.sal = sal;
-        this.common = common;
-        this.deptno = deptno;
-    }
+    private Dept dept;
 
     public Integer getEmpno() {
         return empno;
@@ -86,12 +72,12 @@ public class Emp {
         this.common = common;
     }
 
-    public Integer getDeptno() {
-        return deptno;
+    public Dept getDept() {
+        return dept;
     }
 
-    public void setDeptno(Integer deptno) {
-        this.deptno = deptno;
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 
     @Override
@@ -104,7 +90,7 @@ public class Emp {
                 ", hiredate=" + hiredate +
                 ", sal=" + sal +
                 ", common=" + common +
-                ", deptno=" + deptno +
+                ", dept=" + dept +
                 '}';
     }
 }

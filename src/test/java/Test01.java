@@ -101,4 +101,14 @@ public class Test01 {
         sqlsesson.close();
     }
 
+    @Test
+    public void testGSelect() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+
+        Emp o = dao.selectEmpAndDeptByEmpno(2);
+        System.out.println(o);
+        sqlsesson.close();
+    }
+
 }
