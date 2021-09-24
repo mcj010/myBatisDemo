@@ -40,5 +40,6 @@
         <mapper resource="mapper/empDao.xml"/>
 <!--        <mapper resource="mapper/userDao.xml"/>-->
         <mapper class="com.mcj010.dao.UserDao"/>
+        <mapper resource="mapper/deptDao.xml"/>
     </mappers>
 </configuration>

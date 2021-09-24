@@ -1,4 +1,6 @@
+import com.mcj010.bean.Dept;
 import com.mcj010.bean.Emp;
+import com.mcj010.dao.DeptDao;
 import com.mcj010.dao.EmpDao;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
@@ -105,10 +107,17 @@ public class Test01 {
     public void testGSelect() {
         SqlSession sqlsesson = sqlSessionFactory.openSession();
         EmpDao dao = sqlsesson.getMapper(EmpDao.class);
-
         Emp o = dao.selectEmpAndDeptByEmpno(2);
         System.out.println(o);
         sqlsesson.close();
     }
 
+    @Test
+    public void testHSelectDept() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        DeptDao dao = sqlsesson.getMapper(DeptDao.class);
+        Dept o = dao.selectDeptByDeptno(1);
+        System.out.println(o);
+        sqlsesson.close();
+    }
 }
