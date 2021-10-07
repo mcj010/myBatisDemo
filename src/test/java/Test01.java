@@ -23,7 +23,7 @@ public class Test01 {
     SqlSessionFactory sqlSessionFactory = null;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = null;
         try {

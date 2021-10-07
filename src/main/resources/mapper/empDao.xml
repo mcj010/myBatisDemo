@@ -94,4 +94,21 @@
         select * from emp A left join dept B on A.deptno = B.deptno where empno = #{empno}
     </select>
 
+    <!-- lesson 3 -->
+    <resultMap id="empDept" type="com.mcj010.bean.Emp">
+        <id column="empno" property="empno"></id>
+        <result column="ename" property="ename"></result>
+        <result column="job" property="job"></result>
+        <result column="mgr" property="mgr"></result>
+        <result column="hiredate" property="hiredate"></result>
+        <result column="sal" property="sal"></result>
+        <result column="common" property="common"></result>
+        <!-- 把自动连过去，传deptno-->
+        <association property="dept" column="deptno" select="com.mcj010.dao.DeptDao.selectDeptByStep"/>
+    </resultMap>
+
+    <select id="selectEmpByStep" resultMap="empDept">
+        select * from emp where empno = #{empno}
+    </select>
+
 </mapper>

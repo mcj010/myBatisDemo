@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mcj010.dao.DeptDao">
-    <resultMap id="dept" type="com.mcj010.bean.Dept">
+
+    <resultMap id="myDept" type="com.mcj010.bean.Dept">
         <id property="deptno" column="deptno"/>
         <result property="dname" column="name"/>
         <result property="loc" column="loc"/>
@@ -17,8 +18,12 @@
             <result property="common" column="common"/>
         </collection>
     </resultMap>
-   <select id="selectDeptByDeptno" resultMap="dept">
+    <select id="selectDeptByDeptno" resultMap="myDept">
        select * from dept A left join emp B on A.deptno = B.deptno where A.deptno = #{deptno}
    </select>
+
+    <select id="selectDeptByStep" resultType="com.mcj010.bean.Dept">
+        select * from dept where deptno = #{deptno}
+    </select>
 
 </mapper>

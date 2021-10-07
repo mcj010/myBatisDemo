@@ -25,4 +25,7 @@ public interface EmpDao {
 
     // 一对一
     public Emp selectEmpAndDeptByEmpno(Integer empno);
+
+    //lesson 3
+    public Emp selectEmpByStep(Integer empno);
 }
