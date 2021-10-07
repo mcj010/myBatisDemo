@@ -42,5 +42,15 @@ public class Test03 {
         sqlsesson.close();
     }
 
+    //懒加载
+    @Test
+    public void test02() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+        Emp o = dao.selectEmpByStep(2);
+        System.out.println(o.getEmpno());
+        sqlsesson.close();
+    }
+
 
 }
