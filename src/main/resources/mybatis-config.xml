@@ -7,6 +7,8 @@
     <settings>
         <!--开启驼峰命名自动映射-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- lazy load-->
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
     <typeAliases>
         <package name="com.mcj010.bean"/>

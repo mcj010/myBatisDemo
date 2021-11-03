@@ -103,7 +103,7 @@
         <result column="hiredate" property="hiredate"></result>
         <result column="sal" property="sal"></result>
         <result column="common" property="common"></result>
-        <!-- 把自动连过去，传deptno-->
+        <!-- 把自动连过去，select 参数，column 参数deptno-->
         <association property="dept" column="deptno" select="com.mcj010.dao.DeptDao.selectDeptByStep"/>
     </resultMap>
 
