@@ -31,4 +31,7 @@ public interface EmpDao {
 
     // <sql> <inclued>
     public List<Emp> selectSQLExample();
+
+    // 动态sql <if>
+    public Emp selectByCondition(Emp emp);
 }

@@ -114,8 +114,20 @@
     <sql id="mySql">
         select * from emp
     </sql>
-    
+
     <select id="selectSQLExample" resultType="com.mcj010.bean.Emp">
         <include refid="mySql"></include>
+    </select>
+
+    <select id="selectByCondition" resultType="com.mcj010.bean.Emp">
+        select * from emp
+        <where>
+            <if test="empno != null">
+                empno = #{empno}
+            </if>
+            <if test="ename != null">
+                and ename = #{ename}
+            </if>
+        </where>
     </select>
 </mapper>
