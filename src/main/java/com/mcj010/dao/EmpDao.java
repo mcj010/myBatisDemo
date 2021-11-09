@@ -28,4 +28,7 @@ public interface EmpDao {
 
     //lesson 3
     public Emp selectEmpByStep(Integer empno);
+
+    // <sql> <inclued>
+    public List<Emp> selectSQLExample();
 }

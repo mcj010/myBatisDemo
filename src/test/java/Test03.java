@@ -52,5 +52,15 @@ public class Test03 {
         sqlsesson.close();
     }
 
+    //<sql> <include>
+    @Test
+    public void test03() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+        List<Emp> l= dao.selectSQLExample();
+        System.out.println(l.size());
+        sqlsesson.close();
+    }
+
 
 }

@@ -111,4 +111,11 @@
         select * from emp where empno = #{empno}
     </select>
 
+    <sql id="mySql">
+        select * from emp
+    </sql>
+    
+    <select id="selectSQLExample" resultType="com.mcj010.bean.Emp">
+        <include refid="mySql"></include>
+    </select>
 </mapper>
