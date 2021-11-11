@@ -75,5 +75,17 @@ public class Test03 {
         sqlsesson.close();
     }
 
+    // 动态sql, <choose> <when> <otherwise>
+    @Test
+    public void test05() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+        Emp emp = new Emp();
+//       emp.setEmpno(1);
+        emp.setEname("suzan");
+        Emp o = dao.selecctByChooseCondition(emp);
+        System.out.println(o);
+        sqlsesson.close();
+    }
 
 }

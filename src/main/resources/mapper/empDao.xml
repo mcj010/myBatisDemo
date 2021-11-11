@@ -130,4 +130,21 @@
             </if>
         </where>
     </select>
+
+    <select id="selecctByChooseCondition" resultType="com.mcj010.bean.Emp">
+        select * from emp
+        <where>
+            <choose>
+                <when test="empno != null">
+                    and empno = #{empno}
+                </when>
+                <when test="ename != null">
+                    and ename = #{ename}
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
 </mapper>
