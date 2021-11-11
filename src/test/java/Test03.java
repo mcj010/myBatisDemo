@@ -75,15 +75,15 @@ public class Test03 {
         sqlsesson.close();
     }
 
-    // 动态sql, <choose> <when> <otherwise>
+    // 动态sql, <trim>
     @Test
     public void test05() {
         SqlSession sqlsesson = sqlSessionFactory.openSession();
         EmpDao dao = sqlsesson.getMapper(EmpDao.class);
         Emp emp = new Emp();
-//       emp.setEmpno(1);
+        emp.setEmpno(1);
         emp.setEname("suzan");
-        Emp o = dao.selecctByChooseCondition(emp);
+        Emp o = dao.selecctByTrimCondition(emp);
         System.out.println(o);
         sqlsesson.close();
     }

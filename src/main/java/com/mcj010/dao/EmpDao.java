@@ -37,4 +37,7 @@ public interface EmpDao {
 
     // 动态sql, <choose> <when> <otherwise>
     public Emp selecctByChooseCondition(Emp emp);
+
+    // 动态sql, <trim>
+    public Emp selecctByTrimCondition(Emp emp);
 }

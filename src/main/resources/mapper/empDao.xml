@@ -147,4 +147,22 @@
             </choose>
         </where>
     </select>
+
+    <!--
+    trim:截取字符串，可以自定义where的格式
+    prefix：为sql语句整体添加一个前缀
+    prefixOverrides:去除整体sql语句前面多余的字符串
+    suffixOverriede:去除整体sql语句后面多余的字符串
+    -->
+    <select id="selecctByTrimCondition" resultType="com.mcj010.bean.Emp">
+        select * from emp
+        <trim prefix="where" prefixOverrides="and" suffixOverrides="and">
+            <if test="empno != null">
+                and empno = #{empno} and
+            </if>
+            <if test="ename != null">
+                ename = #{ename} and
+            </if>
+        </trim>
+    </select>
 </mapper>
