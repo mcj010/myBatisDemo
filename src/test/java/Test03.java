@@ -13,9 +13,7 @@ import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @FixMethodOrder(MethodSorters.DEFAULT)
 public class Test03 {
@@ -33,6 +31,7 @@ public class Test03 {
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
+    //1 对1 关联
     @Test
     public void test01() {
         SqlSession sqlsesson = sqlSessionFactory.openSession();
@@ -49,6 +48,7 @@ public class Test03 {
         EmpDao dao = sqlsesson.getMapper(EmpDao.class);
         Emp o = dao.selectEmpByStep(2);
         System.out.println(o.getEmpno());
+        System.out.println(o.getDept());
         sqlsesson.close();
     }
 
@@ -57,7 +57,7 @@ public class Test03 {
     public void test03() {
         SqlSession sqlsesson = sqlSessionFactory.openSession();
         EmpDao dao = sqlsesson.getMapper(EmpDao.class);
-        List<Emp> l= dao.selectSQLExample();
+        List<Emp> l = dao.selectSQLExample();
         System.out.println(l.size());
         sqlsesson.close();
     }
@@ -85,6 +85,19 @@ public class Test03 {
         emp.setEname("suzan");
         Emp o = dao.selecctByTrimCondition(emp);
         System.out.println(o);
+        sqlsesson.close();
+    }
+
+    // foreacrh
+    @Test
+    public void test06() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+        List<Emp> list = dao.selectEmpByDeptnos(Arrays.asList(1, 2));
+        for (Emp emp : list) {
+            System.out.println(emp);
+            System.out.println(emp.getDept());
+        }
         sqlsesson.close();
     }
 

@@ -165,4 +165,21 @@
             </if>
         </trim>
     </select>
+
+    <!--
+  foreach:遍历集合中的元素
+      collection:指定要遍历的集合,对应接口(@Param("deptnos")
+      separator:分隔符
+      open:以什么开始
+      close：以什么结束
+      item:遍历过程中的每一个元素值,对应 #{deptno}
+      index:表示索引
+      select * from emp where deptno in ( ? , ? )
+  -->
+    <select id="selectEmpByDeptnos" resultMap="empDept">
+        select * from emp where deptno in
+        <foreach collection="deptnos" separator="," open="(" item="deptno" index="idx" close=")">
+            #{deptno}
+        </foreach>
+    </select>
 </mapper>

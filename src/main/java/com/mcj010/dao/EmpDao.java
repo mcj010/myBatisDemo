@@ -40,4 +40,6 @@ public interface EmpDao {
 
     // 动态sql, <trim>
     public Emp selecctByTrimCondition(Emp emp);
+
+    public List<Emp> selectEmpByDeptnos(@Param("deptnos") List<Integer> deptnos);
 }
