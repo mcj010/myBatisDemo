@@ -101,4 +101,35 @@ public class Test03 {
         sqlsesson.close();
     }
 
+    //一级缓存：表示sqlSession级别的缓存，每次查询的时候会开启一个会话，此会话相当于一次连接，关闭之后自动失效
+    @Test
+    public void test07() {
+        SqlSession sqlsesson = sqlSessionFactory.openSession();
+        EmpDao dao = sqlsesson.getMapper(EmpDao.class);
+        Emp emp = dao.selectEmpByEmpNo(1);
+        System.out.println(emp);
+        // 清除缓存，失效
+        sqlsesson.clearCache();
+        Emp emp2 = dao.selectEmpByEmpNo(1);
+        System.out.println(emp2);
+        sqlsesson.close();
+    }
+
+    @Test
+    public void test08(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        EmpDao mapper = sqlSession.getMapper(EmpDao.class);
+        EmpDao mapper2 = sqlSession2.getMapper(EmpDao.class);
+
+        Emp emp = mapper.selectEmpByEmpNo(1);
+        System.out.println(emp);
+        sqlSession.close();
+        System.out.println("====================");
+        Emp emp1 = mapper2.selectEmpByEmpNo(1);
+        System.out.println(emp1);
+        sqlSession2.close();
+
+    }
+
 }

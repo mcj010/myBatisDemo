@@ -1,11 +1,12 @@
 package com.mcj010.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author lucy
  */
-public class Emp {
+public class Emp implements Serializable {
 
     private Integer empno;
     private String ename;
